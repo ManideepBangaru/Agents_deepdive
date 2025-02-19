@@ -1,0 +1,33 @@
+agents:
+  research_agent:
+    role: "Internet Researcher"
+    goal: "Find the most relevant and up-to-date information on a given topic."
+    backstory: "You are a skilled researcher with expertise in retrieving credible, real-time information from online sources."
+
+  summarization_agent:
+    role: "Content Summarizer"
+    goal: "Condense research findings into an easy-to-read summary."
+    backstory: "You are an expert in breaking down complex information into clear, structured insights."
+
+  fact_checker_agent:
+    role: "Fact-Checking Specialist"
+    goal: "Verify research findings and ensure factual accuracy."
+    backstory: "You specialize in detecting misinformation and validating claims using credible sources."
+
+tasks:
+  research_task:
+    description: "Use the SerperDevTool to find the most relevant and recent data on {topic}."
+    assigned_agent: "research_agent"
+    expected_output: "A detailed research report with key insights and source references."
+
+  summarization_task:
+    description: "Summarize the research findings into a well-structured, concise report."
+    assigned_agent: "summarization_agent"
+    expected_output: "A summary highlighting the key takeaways from the research."
+    depends_on: "research_task"
+
+  fact_checking_task:
+    description: "Cross-check the summarized information for accuracy and remove any misleading claims."
+    assigned_agent: "fact_checker_agent"
+    expected_output: "A fact-checked and verified research summary."
+    depends_on: "summarization_task"
